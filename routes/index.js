@@ -23,7 +23,7 @@ router.get('/checkout', authenticated, cartController.checkout)
 router.get('/orders', authenticated, orderController.getOrders)
 router.post('/order', authenticated, orderController.postOrder)
 router.post('/order/:id/cancel', authenticated, orderController.cancelOrder)
-router.get('/order/:id/payment', orderController.getPayment)
+router.get('/order/:id/payment', authenticated, orderController.getPayment)
 router.post('/newebpay/callback', orderController.newebpayCallback)
 router.get('/order/:id', authenticated, orderController.getOrder)
 
@@ -42,6 +42,6 @@ router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'
 router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/login' }))
 
 //clientBackURL
-router.get('/clientBack/:sn', orderController.clientBack)
+router.get('/clientBack/:sn', authenticated, orderController.clientBack)
 
 module.exports = router;

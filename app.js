@@ -32,7 +32,7 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs', helpers: requi
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -42,7 +42,7 @@ app.use(methodOverride('_method'))
 app.use(session({
   secret: 'cart',
   name: 'cart',
-  cookie: { maxAge: 86400000 },
+  cookie: { maxAge: 12 * 60 * 60 * 1000 },
   resave: false,
   saveUninitialized: true,
 }));

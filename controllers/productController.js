@@ -6,6 +6,7 @@ const PAGE_LIMIT = 20
 
 
 let productController = {
+
   getProducts: (req, res) => {
     let pageNow = req.query.page
     if (pageNow) {

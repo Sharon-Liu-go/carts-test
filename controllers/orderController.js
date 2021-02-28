@@ -113,9 +113,9 @@ let orderController = {
     return Order.findAll({ where: { sn: data.Result.MerchantOrderNo.slice(0, 13) } }).then(orders => {
       orders[0].update({
         ...req.body,
-        payment_status: 1,
+        payment_status: "1",
       }).then(order => {
-        return res.redirect(`/clientBack/${order.sn}`)
+        res.render('clientBack', { order })
       })
     })
   },

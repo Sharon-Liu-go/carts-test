@@ -78,6 +78,7 @@ let userController = {
 
   editSelfProfile: (req, res) => {
     const id = req.params.id
+    console.log(req.body)
     const { email, phone } = req.body
 
     let msgArray = []
